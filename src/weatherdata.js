@@ -7,17 +7,18 @@ function processWeather(data) {
   newWeather.icon = data.current.condition.icon;
   newWeather.condition = data.current.condition.text;
   newWeather.time = data.current.last_updated;
+  newWeather.tommorowTempC = data.forecast.forecastday[1].hour[14].temp_c;
+  newWeather.tommorowTempF = data.forecast.forecastday[1].hour[14].temp_f;
+  newWeather.tommorowIcon = data.forecast.forecastday[1].hour[14].condition.icon;
+  newWeather.tommorowText = data.forecast.forecastday[1].hour[14].condition.text;
   return newWeather;
 }
 
 async function fetchData(location = 'tampere') {
   try {
-    const data = await fetch(`https://api.weatherapi.com/v1/current.json?key=71166ee9ea884589b83200410240202&q=${location}`, { mode: 'cors' });
-    const dataTommorow = fetch(`https://api.weatherapi.com/v1/forecast.json?key=71166ee9ea884589b83200410240202&q=${location}`, { mode: 'cors' });
+    const data = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=71166ee9ea884589b83200410240202&q=${location}&days=2`, { mode: 'cors' });
     const newData = await data.json();
-    const tommorowData = (await dataTommorow).json();
-    // console.log(newData);
-    console.log(tommorowData);
+    console.log(newData);
 
     return processWeather(newData);
   } catch (error) {

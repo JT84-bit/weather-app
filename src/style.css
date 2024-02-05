@@ -21,6 +21,18 @@ body {
     height: 100vh;
 }
 
+.today {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.todayHeader {
+    font-size: 2em;
+    font-family: unique;
+    color: blue;
+}
+
 .info {
     display: flex;
     flex-direction: column;
@@ -73,7 +85,7 @@ body {
     padding-left: 10px;
 }
 
-.icon img{
+.icon img, .iconTommorow img{
     height: 10em;
 }
 
@@ -106,18 +118,18 @@ form {
     margin-top: 10px;
 }
 
-.text {
+.text, .textTommorow {
     font-weight: bold;
     color: blue;
 }
 
-.tempC, .tempF {
+.tempC, .tempF, .tempCTommorow, .tempFTommorow {
     width: 3em;
     text-align: center;
     font-size: 3em;
 }
 
-.tempC {
+.tempC, .tempCTommorow {
     border-bottom: inset 2px rgb(0, 0, 0, 0.25);
     margin-bottom: 10px;
     padding-bottom: 10px;
